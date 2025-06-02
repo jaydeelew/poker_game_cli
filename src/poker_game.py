@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.11
 """
 TODO:
-- Add testing to check for ties
 - Add betting, calling, raising, folding
 - Add 7 card stud
 - Add 7 card draw
@@ -9,7 +8,6 @@ TODO:
 _ Add UI
 """
 
-# from enum import Enum, auto
 import random
 from collections import Counter
 import os
@@ -58,7 +56,6 @@ class Card:
     SUIT_SET = {"C", "D", "H", "S"}
     # SUIT_SET = {"Clubs", "Diamonds", "Hearts", "Spades"}
 
-    # def __init__(self, rank: Rank, suit: Suit):
     def __init__(self, rank: str, suit: str):
         self._rank = rank
         self._suit = suit
@@ -114,7 +111,7 @@ class PokerHand(Hand):
         _hand_value: Tuple containing hand type and relevant card values for comparison
     """
 
-    # Define as class constants
+    # Class constants
     ROYAL_FLUSH = 10
     STRAIGHT_FLUSH = 9
     FOUR_OF_A_KIND = 8
@@ -358,7 +355,9 @@ class PokerHand(Hand):
         # Pair places its value at index 1, and the other three value in descending order at
         # indexes 2-4.
         # and the remaining card in the third int value.
-        def result_tuple(hand: int) -> tuple[int, int, int, int, int, int]:  # type:ignore
+        def result_tuple(
+            hand: int,
+        ) -> tuple[int, int, int, int, int, int]:  # type:ignore
             match hand:
                 case self.ROYAL_FLUSH:
                     return (self.ROYAL_FLUSH, -1, -1, -1, -1, -1)
@@ -543,10 +542,9 @@ class PokerGame:
         self._draw = False
         self._num_players = 0
         while True:
-            ans = input("Would you like to play 5 card draw? y/n: ")
+            ans = input("Will this be a game of 5 card draw? y/n: ")
             if ans in {"y", "Y", "n", "N"}:
-                ans = ans.lower()
-                if ans == "y":
+                if ans.lower() == "y":
                     self._draw = True
                 break
             else:
@@ -562,6 +560,9 @@ class PokerGame:
                 input("Press Enter to continue...")
                 continue
 
+            if self._num_players < 2:
+                print("There must be at leat 2 players in a game\n")
+                continue
             if self._draw and self._num_players > 6:
                 print("There must be 2 to 6 players in a game of 5 card draw\n")
                 continue
@@ -604,7 +605,8 @@ class PokerGame:
                     four_cards = [card for card in hand._cards if card.rank == four_value]
                     other_card = [card for card in hand._cards if card.rank != four_value]
                     print(
-                        "Four of a Kind:", ", ".join(str(card) for card in four_cards + other_card)
+                        "Four of a Kind:",
+                        ", ".join(str(card) for card in four_cards + other_card),
                     )
 
                 case PokerHand.FULL_HOUSE:
@@ -613,7 +615,10 @@ class PokerGame:
                     pair_value = hand._hand_value[2]
                     three_cards = [card for card in hand._cards if card.rank == three_value]
                     pair_cards = [card for card in hand._cards if card.rank == pair_value]
-                    print("Full House:", ", ".join(str(card) for card in three_cards + pair_cards))
+                    print(
+                        "Full House:",
+                        ", ".join(str(card) for card in three_cards + pair_cards),
+                    )
 
                 case PokerHand.FLUSH:
                     # Sort by value since they're all the same suit
@@ -660,7 +665,10 @@ class PokerGame:
                         key=lambda x: x.rank,
                         reverse=True,
                     )
-                    print("One Pair:", ", ".join(str(card) for card in pair_cards + other_cards))
+                    print(
+                        "One Pair:",
+                        ", ".join(str(card) for card in pair_cards + other_cards),
+                    )
 
                 case PokerHand.HIGH_CARD:
                     sorted_cards = sorted(hand._cards, key=lambda x: x.rank, reverse=True)
