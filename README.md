@@ -7,6 +7,9 @@ This is a simple command-line poker game that offers two variants:
 
 ## How to Run
 
+- Make sure to have Python 3.1O+ for the use of Match Case statement in this script.
+- Install dependencies with the command: pip install -r requirements.txt
+
 To play the game, execute the following command from the root directory of the project:
 ./src/poker_game.py
 
