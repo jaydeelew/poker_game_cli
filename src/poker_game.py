@@ -5,7 +5,6 @@ TODO:
 - Add 7 card stud
 - Add 7 card draw
 - Add Texas Hold 'em
-_ Add UI
 """
 
 import random
@@ -203,9 +202,12 @@ class PokerHand(Hand):
                         if self._hand_value[i] != other._hand_value[i]:  # type: ignore
                             return False
                     return True
-                # If both hands are High Card, compare the highest card values.
+                # If both hands are High Card, compare all card values.
                 case self.HIGH_CARD:
-                    return self._hand_value[1] == other._hand_value[1]
+                    for i in range(1, 6):
+                        if self._hand_value[i] != other._hand_value[i]:
+                            return False
+                    return True
                 # If hand type is not recognized, raise an error.
                 case _:
                     raise ValueError("Invalid hand value comparison - unexpected hand type")

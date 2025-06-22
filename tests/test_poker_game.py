@@ -300,7 +300,18 @@ def tied_high_card():
 
 
 @pytest.fixture
-def tied_high_card_diff():
+def tied_high_card_2():
+    return [
+        Card("A", "H"),
+        Card("K", "D"),
+        Card("J", "C"),
+        Card("9", "H"),
+        Card("7", "D"),
+    ]
+
+
+@pytest.fixture
+def sample_high_card_ace():
     return [
         Card("A", "H"),
         Card("K", "D"),
@@ -403,17 +414,6 @@ def sample_one_pair_queens():
     return [
         Card("Q", "H"),
         Card("Q", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("7", "D"),
-    ]
-
-
-@pytest.fixture
-def sample_high_card_ace():
-    return [
-        Card("A", "H"),
-        Card("K", "D"),
         Card("J", "C"),
         Card("9", "H"),
         Card("7", "D"),
@@ -588,9 +588,7 @@ def test_poker_game_winner(mock_input):
     assert a_winner in game._players.keys()
 
 
-def test_poker_game_draw_winners(
-    mock_input, tied_royal_flush_hearts, tied_royal_flush_spades
-):
+def test_poker_game_draw_winners(mock_input, tied_royal_flush_hearts, tied_royal_flush_spades):
     game = PokerGame()
     # Manually set player hands to equal royal flushes
     players = list(game._players.keys())
@@ -727,9 +725,9 @@ def test_poker_hand_one_pair_tie(tied_one_pair, tied_one_pair_diff_kickers):
     assert not (hand1 < hand2)
 
 
-def test_poker_hand_high_card_tie(tied_high_card, tied_high_card_diff):
+def test_poker_hand_high_card_tie(tied_high_card, sample_high_card_ace):
     hand1 = PokerHand(tied_high_card)  # A K J 9 7
-    hand2 = PokerHand(tied_high_card_diff)  # A K J 9 6
+    hand2 = PokerHand(sample_high_card_ace)  # A K J 9 6
     # Compare each card from highest to lowest
     assert hand2 < hand1
     assert not (hand1 < hand2)
@@ -751,9 +749,7 @@ def test_poker_hand_straight_flush_equal(
     assert hand1 == hand2
 
 
-def test_poker_hand_four_kind_equal(
-    sample_four_kind_aces, sample_four_kind_same_kicker
-):
+def test_poker_hand_four_kind_equal(sample_four_kind_aces, sample_four_kind_same_kicker):
     hand1 = PokerHand(sample_four_kind_aces)
     hand2 = PokerHand(sample_four_kind_same_kicker)
     # Four of a kind with same kicker value are equal regardless of kicker suit
@@ -795,11 +791,17 @@ def test_poker_hand_one_pair_equal(tied_one_pair, sample_one_pair_queens):
     assert hand1 == hand2
 
 
-def test_poker_hand_high_card_equal(tied_high_card, sample_high_card_ace):
-    hand1 = PokerHand(sample_high_card_ace)
-    hand2 = PokerHand(tied_high_card)  # Same cards but potentially different order
-    # Same rank high cards are equal regardless of suit
+def test_poker_hand_high_card_equal(tied_high_card, tied_high_card_2):
+    hand2 = PokerHand(tied_high_card)  # A K J 9 6
+    hand1 = PokerHand(tied_high_card_2)  # A K J 9 6
+    # All cards are the same, so they are equal
     assert hand1 == hand2
+
+
+def test_poker_hand_high_card_equal_2(tied_high_card, sample_high_card_ace):
+    hand1 = PokerHand(tied_high_card)  # A K J 9 6
+    hand2 = PokerHand(sample_high_card_ace)  # A K J 9 7
+    assert hand1 != hand2
 
 
 def test_poker_hand_not_equal(sample_cards_royal_flush, sample_cards_four_kind):
