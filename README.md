@@ -40,6 +40,8 @@ A command-line Poker game built with Python. The game supports both 5-card draw 
 
 ## Installation
 
+> **Note:** Python 3.10 or higher is required.
+
 1. **Clone the repository** (if you haven't already):
 
    ```bash
