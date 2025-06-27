@@ -5,431 +5,431 @@ from poker_game import Card, PokerHand, Deck, Player, PokerGame
 @pytest.fixture
 def sample_cards_royal_flush():
     return [
-        Card("A", "H"),
-        Card("K", "H"),
-        Card("Q", "H"),
-        Card("J", "H"),
-        Card("10", "H"),
+        Card("a", "h"),
+        Card("k", "h"),
+        Card("q", "h"),
+        Card("j", "h"),
+        Card("10", "h"),
     ]
 
 
 @pytest.fixture
 def sample_cards_four_kind():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("A", "S"),
-        Card("K", "H"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("a", "s"),
+        Card("k", "h"),
     ]
 
 
 @pytest.fixture
 def sample_cards_straight_flush():
     return [
-        Card("9", "C"),
-        Card("8", "C"),
-        Card("7", "C"),
-        Card("6", "C"),
-        Card("5", "C"),
+        Card("9", "c"),
+        Card("8", "c"),
+        Card("7", "c"),
+        Card("6", "c"),
+        Card("5", "c"),
     ]
 
 
 @pytest.fixture
 def sample_cards_full_house():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("K", "H"),
-        Card("K", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("k", "h"),
+        Card("k", "d"),
     ]
 
 
 @pytest.fixture
 def sample_cards_flush():
     return [
-        Card("A", "H"),
-        Card("J", "H"),
-        Card("9", "H"),
-        Card("7", "H"),
-        Card("4", "H"),
+        Card("a", "h"),
+        Card("j", "h"),
+        Card("9", "h"),
+        Card("7", "h"),
+        Card("4", "h"),
     ]
 
 
 @pytest.fixture
 def sample_cards_straight():
     return [
-        Card("9", "H"),
-        Card("8", "C"),
-        Card("7", "D"),
-        Card("6", "S"),
-        Card("5", "H"),
+        Card("9", "h"),
+        Card("8", "c"),
+        Card("7", "d"),
+        Card("6", "s"),
+        Card("5", "h"),
     ]
 
 
 @pytest.fixture
 def sample_cards_three_kind():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("K", "H"),
-        Card("Q", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("k", "h"),
+        Card("q", "d"),
     ]
 
 
 @pytest.fixture
 def sample_cards_two_pair():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("K", "C"),
-        Card("K", "H"),
-        Card("Q", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("k", "c"),
+        Card("k", "h"),
+        Card("q", "d"),
     ]
 
 
 @pytest.fixture
 def sample_cards_one_pair():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("K", "C"),
-        Card("Q", "H"),
-        Card("J", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("k", "c"),
+        Card("q", "h"),
+        Card("j", "d"),
     ]
 
 
 @pytest.fixture
 def sample_cards_high_card():
     return [
-        Card("A", "H"),
-        Card("K", "D"),
-        Card("Q", "C"),
-        Card("J", "H"),
-        Card("9", "D"),
+        Card("a", "h"),
+        Card("k", "d"),
+        Card("q", "c"),
+        Card("j", "h"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def tied_royal_flush_hearts():
     return [
-        Card("A", "H"),
-        Card("K", "H"),
-        Card("Q", "H"),
-        Card("J", "H"),
-        Card("10", "H"),
+        Card("a", "h"),
+        Card("k", "h"),
+        Card("q", "h"),
+        Card("j", "h"),
+        Card("10", "h"),
     ]
 
 
 @pytest.fixture
 def tied_royal_flush_spades():
     return [
-        Card("A", "S"),
-        Card("K", "S"),
-        Card("Q", "S"),
-        Card("J", "S"),
-        Card("10", "S"),
+        Card("a", "s"),
+        Card("k", "s"),
+        Card("q", "s"),
+        Card("j", "s"),
+        Card("10", "s"),
     ]
 
 
 @pytest.fixture
 def tied_straight_flush_high():
     return [
-        Card("K", "H"),
-        Card("Q", "H"),
-        Card("J", "H"),
-        Card("10", "H"),
-        Card("9", "H"),
+        Card("k", "h"),
+        Card("q", "h"),
+        Card("j", "h"),
+        Card("10", "h"),
+        Card("9", "h"),
     ]
 
 
 @pytest.fixture
 def tied_straight_flush_high_diff_suit():
     return [
-        Card("K", "D"),
-        Card("Q", "D"),
-        Card("J", "D"),
-        Card("10", "D"),
-        Card("9", "D"),
+        Card("k", "d"),
+        Card("q", "d"),
+        Card("j", "d"),
+        Card("10", "d"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def tied_full_house():
     return [
-        Card("K", "H"),
-        Card("K", "D"),
-        Card("K", "C"),
-        Card("Q", "H"),
-        Card("Q", "D"),
+        Card("k", "h"),
+        Card("k", "d"),
+        Card("k", "c"),
+        Card("q", "h"),
+        Card("q", "d"),
     ]
 
 
 @pytest.fixture
 def tied_full_house_diff_pair():
     return [
-        Card("K", "H"),
-        Card("K", "D"),
-        Card("K", "S"),
-        Card("J", "H"),
-        Card("J", "D"),
+        Card("k", "h"),
+        Card("k", "d"),
+        Card("k", "s"),
+        Card("j", "h"),
+        Card("j", "d"),
     ]
 
 
 @pytest.fixture
 def tied_flush_hearts():
     return [
-        Card("A", "H"),
-        Card("K", "H"),
-        Card("J", "H"),
-        Card("9", "H"),
-        Card("7", "H"),
+        Card("a", "h"),
+        Card("k", "h"),
+        Card("j", "h"),
+        Card("9", "h"),
+        Card("7", "h"),
     ]
 
 
 @pytest.fixture
 def tied_flush_hearts_diff():
     return [
-        Card("A", "H"),
-        Card("K", "H"),
-        Card("J", "H"),
-        Card("9", "H"),
-        Card("6", "H"),
+        Card("a", "h"),
+        Card("k", "h"),
+        Card("j", "h"),
+        Card("9", "h"),
+        Card("6", "h"),
     ]
 
 
 @pytest.fixture
 def tied_straight():
     return [
-        Card("9", "H"),
-        Card("8", "C"),
-        Card("7", "D"),
-        Card("6", "S"),
-        Card("5", "H"),
+        Card("9", "h"),
+        Card("8", "c"),
+        Card("7", "d"),
+        Card("6", "s"),
+        Card("5", "h"),
     ]
 
 
 @pytest.fixture
 def tied_straight_diff_suits():
     return [
-        Card("9", "D"),
-        Card("8", "H"),
-        Card("7", "S"),
-        Card("6", "C"),
-        Card("5", "D"),
+        Card("9", "d"),
+        Card("8", "h"),
+        Card("7", "s"),
+        Card("6", "c"),
+        Card("5", "d"),
     ]
 
 
 @pytest.fixture
 def tied_three_kind():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("Q", "C"),
-        Card("J", "H"),
-        Card("9", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("q", "c"),
+        Card("j", "h"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def tied_three_kind_diff_kickers():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("Q", "S"),
-        Card("J", "H"),
-        Card("8", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("q", "s"),
+        Card("j", "h"),
+        Card("8", "d"),
     ]
 
 
 @pytest.fixture
 def tied_two_pair():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("J", "H"),
-        Card("9", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("j", "h"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def tied_two_pair_diff_kicker():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("J", "H"),
-        Card("8", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("j", "h"),
+        Card("8", "d"),
     ]
 
 
 @pytest.fixture
 def tied_one_pair():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("7", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("7", "d"),
     ]
 
 
 @pytest.fixture
 def tied_one_pair_diff_kickers():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("6", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("6", "d"),
     ]
 
 
 @pytest.fixture
 def tied_high_card():
     return [
-        Card("A", "H"),
-        Card("K", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("7", "D"),
+        Card("a", "h"),
+        Card("k", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("7", "d"),
     ]
 
 
 @pytest.fixture
 def tied_high_card_2():
     return [
-        Card("A", "H"),
-        Card("K", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("7", "D"),
+        Card("a", "h"),
+        Card("k", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("7", "d"),
     ]
 
 
 @pytest.fixture
 def sample_high_card_ace():
     return [
-        Card("A", "H"),
-        Card("K", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("6", "D"),
+        Card("a", "h"),
+        Card("k", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("6", "d"),
     ]
 
 
 @pytest.fixture
 def sample_four_kind_aces():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("A", "S"),
-        Card("K", "H"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("a", "s"),
+        Card("k", "h"),
     ]
 
 
 @pytest.fixture
 def sample_four_kind_kings():
     return [
-        Card("K", "H"),
-        Card("K", "D"),
-        Card("K", "C"),
-        Card("K", "S"),
-        Card("A", "H"),
+        Card("k", "h"),
+        Card("k", "d"),
+        Card("k", "c"),
+        Card("k", "s"),
+        Card("a", "h"),
     ]
 
 
 @pytest.fixture
 def sample_four_kind_same_kicker():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("A", "S"),
-        Card("K", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("a", "s"),
+        Card("k", "d"),
     ]
 
 
 @pytest.fixture
 def sample_add_remove_cards():
     return [
-        Card("A", "H"),
-        Card("A", "D"),
-        Card("A", "C"),
-        Card("K", "H"),
-        Card("3", "D"),
+        Card("a", "h"),
+        Card("a", "d"),
+        Card("a", "c"),
+        Card("k", "h"),
+        Card("3", "d"),
     ]
 
 
 @pytest.fixture
 def sample_flush_hearts():
     return [
-        Card("A", "H"),
-        Card("K", "H"),
-        Card("J", "H"),
-        Card("9", "H"),
-        Card("7", "H"),
+        Card("a", "h"),
+        Card("k", "h"),
+        Card("j", "h"),
+        Card("9", "h"),
+        Card("7", "h"),
     ]
 
 
 @pytest.fixture
 def sample_flush_spades():
     return [
-        Card("A", "S"),
-        Card("K", "S"),
-        Card("J", "S"),
-        Card("9", "S"),
-        Card("7", "S"),
+        Card("a", "s"),
+        Card("k", "s"),
+        Card("j", "s"),
+        Card("9", "s"),
+        Card("7", "s"),
     ]
 
 
 @pytest.fixture
 def sample_three_kind_queens():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("Q", "C"),
-        Card("J", "H"),
-        Card("9", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("q", "c"),
+        Card("j", "h"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def sample_two_pair_queens_jacks():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("J", "H"),
-        Card("9", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("j", "h"),
+        Card("9", "d"),
     ]
 
 
 @pytest.fixture
 def sample_one_pair_queens():
     return [
-        Card("Q", "H"),
-        Card("Q", "D"),
-        Card("J", "C"),
-        Card("9", "H"),
-        Card("7", "D"),
+        Card("q", "h"),
+        Card("q", "d"),
+        Card("j", "c"),
+        Card("9", "h"),
+        Card("7", "d"),
     ]
 
 
 def test_card_creation():
-    card = Card("A", "H")
-    assert card.rank == Card.RANK_DICT["A"]
-    assert card.suit == "H"
-    assert str(card) == "A of H"
+    card = Card("a", "h")
+    assert card.rank == Card.RANK_DICT["a"]
+    assert card.suit == "h"
+    assert str(card) == "A♥"
 
 
 def test_card_comparison():
-    card1 = Card("A", "H")
-    card2 = Card("K", "H")
+    card1 = Card("a", "h")
+    card2 = Card("k", "h")
     assert card2.rank < card1.rank
     assert not (card1.rank < card2.rank)
 
@@ -554,14 +554,14 @@ def test_poker_hand_add_remove_card(sample_add_remove_cards):
     hand = PokerHand(sample_add_remove_cards)
 
     # Test removing a card
-    assert hand.remove_card(3, "D") is True
+    assert hand.remove_card(3, "d") is True
     assert len(hand._cards) == 4
 
     # Test removing a non-existent card
-    assert hand.remove_card("2", "H") is False
+    assert hand.remove_card("2", "h") is False
 
     # Test adding a card
-    new_card = Card("A", "S")
+    new_card = Card("a", "s")
     hand.add_card(new_card)
     assert len(hand._cards) == 5
     assert new_card in hand._cards
