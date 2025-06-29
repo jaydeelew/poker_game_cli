@@ -73,4 +73,6 @@ python3 ./src/poker_game.py
 
 Follow the on-screen prompts to add players, select the game variant, and play Poker in your terminal!
 
+Enjoy!
+
 ---
