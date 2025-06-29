@@ -76,5 +76,3 @@ Follow the on-screen prompts to add players, select the game variant, and play P
 ---
 
 I am happy to receive advice for improvements.
-
----
