@@ -162,10 +162,7 @@ class PokerHand(Hand):
                     return self._hand_value[1] == other._hand_value[1]
                 # If both hands are Full House, compare the three of a kind value, then pair value.
                 case self.FULL_HOUSE:
-                    return (
-                        self._hand_value[1] == other._hand_value[1]
-                        and self._hand_value[2] == other._hand_value[2]
-                    )
+                    return self._hand_value[1] == other._hand_value[1] and self._hand_value[2] == other._hand_value[2]
                 # If both hands are Flush, compare the highest card values.
                 case self.FLUSH:
                     for i in range(1, 6):
@@ -586,7 +583,7 @@ class PokerGame:
     def show_hand(self, player: Player) -> None:
         hand = self._players[player]
         if hand:
-            print(f"\n{player._name} with ", end="")
+            print(f"{player._name} with ", end="")
             match hand._hand_value[0]:
                 case PokerHand.ROYAL_FLUSH:
                     sorted_cards = sorted(hand._cards, key=lambda x: x.rank)
@@ -644,14 +641,10 @@ class PokerGame:
                     low_pair = hand._hand_value[2]
                     high_pair_cards = [card for card in hand._cards if card.rank == high_pair]
                     low_pair_cards = [card for card in hand._cards if card.rank == low_pair]
-                    other_card = [
-                        card for card in hand._cards if card.rank not in (high_pair, low_pair)
-                    ]
+                    other_card = [card for card in hand._cards if card.rank not in (high_pair, low_pair)]
                     print(
                         "Two Pair:",
-                        " ".join(
-                            str(card) for card in high_pair_cards + low_pair_cards + other_card
-                        ),
+                        " ".join(str(card) for card in high_pair_cards + low_pair_cards + other_card),
                     )
 
                 case PokerHand.ONE_PAIR:
@@ -679,7 +672,7 @@ class PokerGame:
             print(f"\n{player._name}, please have a seat")
             input("Press Enter when you are ready to see your cards ...")
             self.show_hand(player)
-            input("Press Enter when you have are done seeing your cards ...")
+            input("Press Enter when you are done seeing your cards ...")
             # Clear terminal screen
             os.system("cls" if os.name == "nt" else "clear")
 
@@ -713,10 +706,7 @@ class PokerGame:
                 elif len(trade) == 3 and trade.startswith("10"):
                     rank, suit = "10", trade[2]
                 else:
-                    print(
-                        "\nInvalid card format. Please enter two characters\n"
-                        "(e.g. qh for Q♥ or 10c for 10♣): "
-                    )
+                    print("\nInvalid card format. Please enter two characters\n" "(e.g. qh for Q♥ or 10c for 10♣): ")
                     input("Press Enter to continue ...")
                     continue
 
