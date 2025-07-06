@@ -64,9 +64,7 @@ class Card:
 
     def __str__(self) -> str:
         # Use uppercase for face cards and Ace
-        rank_display = (
-            self._rank.upper() if self._rank in {"j", "q", "k", "a"} else self._rank
-        )
+        rank_display = self._rank.upper() if self._rank in {"j", "q", "k", "a"} else self._rank
         suit_symbol = self.SUIT_SYMBOLS[self._suit]
         return f"{rank_display}{suit_symbol}"
 
@@ -164,10 +162,7 @@ class PokerHand(Hand):
                     return self._hand_value[1] == other._hand_value[1]
                 # If both hands are Full House, compare the three of a kind value, then pair value.
                 case self.FULL_HOUSE:
-                    return (
-                        self._hand_value[1] == other._hand_value[1]
-                        and self._hand_value[2] == other._hand_value[2]
-                    )
+                    return self._hand_value[1] == other._hand_value[1] and self._hand_value[2] == other._hand_value[2]
                 # If both hands are Flush, compare the highest card values.
                 case self.FLUSH:
                     for i in range(1, 6):
@@ -207,9 +202,7 @@ class PokerHand(Hand):
                     return True
                 # If hand type is not recognized, raise an error.
                 case _:
-                    raise ValueError(
-                        "Invalid hand value comparison - unexpected hand type"
-                    )
+                    raise ValueError("Invalid hand value comparison - unexpected hand type")
         else:
             return False
 
@@ -292,9 +285,7 @@ class PokerHand(Hand):
                     return False
                 # If hand type is not recognized, raise an error.
                 case _:
-                    raise ValueError(
-                        "Invalid hand value comparison - unexpected hand type"
-                    )
+                    raise ValueError("Invalid hand value comparison - unexpected hand type")
         else:
             return self._hand_value[0] < other._hand_value[0]
 
@@ -600,19 +591,13 @@ class PokerGame:
 
                 case PokerHand.STRAIGHT_FLUSH:
                     sorted_cards = sorted(hand._cards, key=lambda x: x.rank)
-                    print(
-                        "Straight Flush:", " ".join(str(card) for card in sorted_cards)
-                    )
+                    print("Straight Flush:", " ".join(str(card) for card in sorted_cards))
 
                 case PokerHand.FOUR_OF_A_KIND:
                     # Group four matching cards first, then the remaining card
                     four_value = hand._hand_value[1]
-                    four_cards = [
-                        card for card in hand._cards if card.rank == four_value
-                    ]
-                    other_card = [
-                        card for card in hand._cards if card.rank != four_value
-                    ]
+                    four_cards = [card for card in hand._cards if card.rank == four_value]
+                    other_card = [card for card in hand._cards if card.rank != four_value]
                     print(
                         "Four of a Kind:",
                         " ".join(str(card) for card in four_cards + other_card),
@@ -622,12 +607,8 @@ class PokerGame:
                     # Group three matching cards first, then the pair
                     three_value = hand._hand_value[1]
                     pair_value = hand._hand_value[2]
-                    three_cards = [
-                        card for card in hand._cards if card.rank == three_value
-                    ]
-                    pair_cards = [
-                        card for card in hand._cards if card.rank == pair_value
-                    ]
+                    three_cards = [card for card in hand._cards if card.rank == three_value]
+                    pair_cards = [card for card in hand._cards if card.rank == pair_value]
                     print(
                         "Full House:",
                         " ".join(str(card) for card in three_cards + pair_cards),
@@ -635,9 +616,7 @@ class PokerGame:
 
                 case PokerHand.FLUSH:
                     # Sort by value since they're all the same suit
-                    sorted_cards = sorted(
-                        hand._cards, key=lambda x: x.rank, reverse=True
-                    )
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.rank, reverse=True)
                     print("Flush:", " ".join(str(card) for card in sorted_cards))
 
                 case PokerHand.STRAIGHT:
@@ -646,9 +625,7 @@ class PokerGame:
 
                 case PokerHand.THREE_OF_A_KIND:
                     three_value = hand._hand_value[1]
-                    three_cards = [
-                        card for card in hand._cards if card.rank == three_value
-                    ]
+                    three_cards = [card for card in hand._cards if card.rank == three_value]
                     other_cards = sorted(
                         [card for card in hand._cards if card.rank != three_value],
                         key=lambda x: x.rank,
@@ -662,30 +639,17 @@ class PokerGame:
                 case PokerHand.TWO_PAIR:
                     high_pair = hand._hand_value[1]
                     low_pair = hand._hand_value[2]
-                    high_pair_cards = [
-                        card for card in hand._cards if card.rank == high_pair
-                    ]
-                    low_pair_cards = [
-                        card for card in hand._cards if card.rank == low_pair
-                    ]
-                    other_card = [
-                        card
-                        for card in hand._cards
-                        if card.rank not in (high_pair, low_pair)
-                    ]
+                    high_pair_cards = [card for card in hand._cards if card.rank == high_pair]
+                    low_pair_cards = [card for card in hand._cards if card.rank == low_pair]
+                    other_card = [card for card in hand._cards if card.rank not in (high_pair, low_pair)]
                     print(
                         "Two Pair:",
-                        " ".join(
-                            str(card)
-                            for card in high_pair_cards + low_pair_cards + other_card
-                        ),
+                        " ".join(str(card) for card in high_pair_cards + low_pair_cards + other_card),
                     )
 
                 case PokerHand.ONE_PAIR:
                     pair_value = hand._hand_value[1]
-                    pair_cards = [
-                        card for card in hand._cards if card.rank == pair_value
-                    ]
+                    pair_cards = [card for card in hand._cards if card.rank == pair_value]
                     other_cards = sorted(
                         [card for card in hand._cards if card.rank != pair_value],
                         key=lambda x: x.rank,
@@ -697,9 +661,7 @@ class PokerGame:
                     )
 
                 case PokerHand.HIGH_CARD:
-                    sorted_cards = sorted(
-                        hand._cards, key=lambda x: x.rank, reverse=True
-                    )
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.rank, reverse=True)
                     print("High Card:", " ".join(str(card) for card in sorted_cards))
 
     def show_players_hand(self, player):
@@ -710,7 +672,7 @@ class PokerGame:
             print(f"\n{player._name}, please have a seat")
             input("Press Enter when you are ready to see your cards ...")
             self.show_hand(player)
-            input("Press Enter when you have are done seeing your cards ...")
+            input("Press Enter when you are done seeing your cards ...")
             # Clear terminal screen
             os.system("cls" if os.name == "nt" else "clear")
 
@@ -721,9 +683,7 @@ class PokerGame:
             input("Press Enter when you are ready to see your cards ...")
             self.show_hand(player)
             while True:
-                ans = input(
-                    f"\n{player._name}, how many cards are you trading in (0-3)? "
-                )
+                ans = input(f"\n{player._name}, how many cards are you trading in (0-3)? ")
                 try:
                     num_cards_trading = int(ans)
                 except ValueError:
@@ -740,18 +700,13 @@ class PokerGame:
 
             curr_num_cards = 0
             while curr_num_cards < num_cards_trading:
-                trade = input(
-                    "\nEnter the card you are trading (e.g. qh for Q♥ or 10c for 10♣): "
-                )
+                trade = input("\nEnter the card you are trading (e.g. qh for Q♥ or 10c for 10♣): ")
                 if len(trade) == 2:
                     rank, suit = trade[0], trade[1]
                 elif len(trade) == 3 and trade.startswith("10"):
                     rank, suit = "10", trade[2]
                 else:
-                    print(
-                        "\nInvalid card format. Please enter two characters\n"
-                        "(e.g. qh for Q♥ or 10c for 10♣): "
-                    )
+                    print("\nInvalid card format. Please enter two characters\n" "(e.g. qh for Q♥ or 10c for 10♣): ")
                     input("Press Enter to continue ...")
                     continue
 
@@ -773,13 +728,9 @@ class PokerGame:
                         curr_num_cards += 1
                     else:
                         # Use uppercase for face cards and Ace, and get the Unicode suit symbol
-                        rank_display = (
-                            rank.upper() if rank in {"j", "q", "k", "a"} else rank
-                        )
+                        rank_display = rank.upper() if rank in {"j", "q", "k", "a"} else rank
                         suit_symbol = Card.SUIT_SYMBOLS[suit]
-                        print(
-                            f"{player._name} does not have a {rank_display}{suit_symbol}"
-                        )
+                        print(f"{player._name} does not have a {rank_display}{suit_symbol}")
                         input("Press Enter to continue ...")
                 else:
                     print("\nInvalid card. Please enter a valid card value and suit.")
