@@ -669,7 +669,7 @@ class PokerGame:
 
     def show_all_hands(self) -> None:
         for player in self._players.keys():
-            print(f"\n{player._name}, please have a seat")
+            print(f"\n{player._name}, please have a seat and be sure nobody is looking.")
             input("Press Enter when you are ready to see your cards ...")
             self.show_hand(player)
             input("Press Enter when you are done seeing your cards ...")
@@ -679,7 +679,7 @@ class PokerGame:
     def draw_cards(self) -> None:
         for player in self._players:
             num_cards_trading = 0
-            print(f"\n{player._name}, please have a seat")
+            print(f"\n{player._name}, please have a seat and be sure nobody is looking.")
             input("Press Enter when you are ready to see your cards ...")
             self.show_hand(player)
             while True:
