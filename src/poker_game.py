@@ -542,7 +542,7 @@ class PokerGame:
                     self._draw = True
                 break
             else:
-                print("You must enter y or n")
+                print("You must enter y or n.")
                 input("Press Enter to continue...")
 
         while True:
@@ -550,18 +550,18 @@ class PokerGame:
             try:
                 self._num_players = int(ans)
             except ValueError:
-                print("Invalid input. Please enter a number")
+                print("Invalid input. Please enter a number.")
                 input("Press Enter to continue...")
                 continue
 
             if self._num_players < 2:
-                print("There must be at leat 2 players in a game\n")
+                print("There must be at leat 2 players in a game.\n")
                 continue
             if self._draw and self._num_players > 6:
-                print("There must be 2 to 6 players in a game of 5 card draw\n")
+                print("There must be 2 to 6 players in a game of 5 card draw.\n")
                 continue
             elif self._num_players > 10:
-                print("There must be 2 to 10 players in a game of 5 card stud\n")
+                print("There must be 2 to 10 players in a game of 5 card stud.\n")
                 continue
 
             break
@@ -687,12 +687,12 @@ class PokerGame:
                 try:
                     num_cards_trading = int(ans)
                 except ValueError:
-                    print("Invalid input. Please enter a number")
+                    print("Invalid input. Please enter a number.")
                     input("Press Enter to continue ...")
                     continue
 
                 if not 0 <= num_cards_trading <= 3:
-                    print("You must enter a number from 0 to 3")
+                    print("You must enter a number from 0 to 3.")
                     input("Press Enter to continue ...")
                     continue
                 else:
@@ -712,11 +712,6 @@ class PokerGame:
 
                 # Get the player's hand.
                 player_hand = self._players[player]
-
-                # Check if player has a valid hand.
-                if player_hand is None:
-                    print(f"Player {player._name} has no hand")
-                    continue
 
                 # Is trade is a valid card?
                 if rank in Card.RANK_DICT and suit in Card.SUIT_SET:
