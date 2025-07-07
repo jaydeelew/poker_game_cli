@@ -549,7 +549,7 @@ class PokerGame:
                 input("Press Enter to continue...")
 
         while True:
-            ans = input("Enter the number of players: ")
+            ans = input("\nEnter the number of players: ")
             try:
                 self._num_players = int(ans)
             except ValueError:
